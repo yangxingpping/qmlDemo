@@ -256,7 +256,6 @@ Rectangle{
             property int timemini : 600
             NumberAnimation { target: rectBottomMenuMain; property: "y"; duration: animBottomMenu.timemini; from: 0; to: -r.height; easing.type: Easing.InOutQuad }
             NumberAnimation { target: rectBottomMenuMain; property: "height"; duration: animBottomMenu.timemini; from: r.height; to: 0; easing.type: Easing.InOutQuad }
-            //NumberAnimation { target: rectBottomMenuMain; property: "width"; duration: animBottomMenu.timemini; from: r.width; to: 0; easing.type: Easing.InOutQuad }
             NumberAnimation { target: rectBottomMenuDetail; property: "y"; duration: animBottomMenu.timemini; from: r.height; to: 0; easing.type: Easing.InOutQuad }
             NumberAnimation { target: rectBottomMenuDetail; property: "height"; duration: animBottomMenu.timemini; from: 0; to: r.height; easing.type: Easing.InOutQuad }
         }
@@ -287,31 +286,5 @@ Rectangle{
         detailModel.append({"name": qsTr("Home"),"iconsource": "ProdHome.svg"});
         detailModel.append({"name": qsTr("Jog"),"iconsource": "ProdJog.svg"});
         detailModel.append({"name": qsTr("NCFunc"),"iconsource": "ProdNCFunc.svg"});
-    }
-
-    function switchToPage(index){
-        switch(index){
-            case 0: //home(load) page
-            {
-                r.visible = false
-            }break;
-            case 1: //prod page
-            {
-                initProdDetailMenu()
-                r.visible = true
-            }break;
-            case 2: //prog page
-            {
-                r.visible = true
-            }
-            default:
-            {
-
-            }break;
-        }
-        if(btnsBotton.checkedButton){
-            r.setUnchecked(btnsBotton.checkedButton)
-        }
-        r.setChecked(btnsBotton.buttons[index-1])
     }
 }
