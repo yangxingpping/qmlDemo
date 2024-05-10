@@ -181,12 +181,9 @@ Rectangle{
 
                 btn.contentItem.color = r.bottomPaneSelectedButtonColor 
                 btn.background.color = r.btnClickedBackgroundColor
-                //checkedButton = btn
                 if(!r.debug){
                     pagemain.switchPageFromQML(btn.index, 0)
                 }
-            }
-            Component.onCompleted: {
             }
         }
         ListModel {
