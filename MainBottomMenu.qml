@@ -28,17 +28,21 @@ Rectangle{
     }
 
     function updateMainPage(index){
-        if(btnsBotton.clickedIndex != -1){
-            setUnchecked(btnsBotton.buttons[btnsBotton.clickedIndex]);
-        }
-
-        btnsBotton.clickedIndex = index;
-        btnsBotton.checkedButton = btnsBotton.buttons[index];
-        setChecked(btnsBotton.buttons[index]);
+        updateGroupDisplay(groupMainButtons, index);
     }
 
     function updateDetailPage(index){
+        updateGroupDisplay(groupDetailButtons, index);
+    }
 
+    function updateGroupDisplay(btnGroup, index){
+        if(btnGroup.clickedIndex != -1){
+            setUnchecked(btnGroup.buttons[btnGroup.clickedIndex]);
+        }
+
+        btnGroup.clickedIndex = index;
+        btnGroup.checkedButton = btnGroup.buttons[index];
+        setChecked(btnGroup.buttons[index]);
     }
 
     function setChecked(btn){
@@ -61,14 +65,14 @@ Rectangle{
         width: parent.width
         height: parent.height
         ButtonGroup{
-            id: btnsBotton
+            id: groupMainButtons
             exclusive: true
             property int clickedIndex: -1
             onClicked: function(btn) {
             }
         }
         ListModel {
-            id: contactModel
+            id: mainModel
             ListElement {
                 name: qsTr("Prod")
                 iconsource: "Prod.svg"
@@ -111,12 +115,12 @@ Rectangle{
             rightMargin: r.width > 700 ? 68 : 10
             anchors.fill: parent
             orientation: ListView.Horizontal
-            model: contactModel
+            model: mainModel
             delegate: RoundButton {
                 id: control
                 height: parent.height
-                ButtonGroup.group: btnsBotton
-                width : (rowBottomBtns.width - rowBottomBtns.leftMargin - rowBottomBtns.rightMargin) / contactModel.count
+                ButtonGroup.group: groupMainButtons
+                width : (rowBottomBtns.width - rowBottomBtns.leftMargin - rowBottomBtns.rightMargin) / mainModel.count
                 radius: 2
                 text: name
                 font.pixelSize: 10
@@ -166,7 +170,7 @@ Rectangle{
         width: parent.width
         height: 0
         ButtonGroup{
-            id: groupBtnDetails
+            id: groupDetailButtons
             exclusive: true
             onClicked: function(btn) {
                 if(checkedButton){
@@ -208,7 +212,7 @@ Rectangle{
             delegate: RoundButton {
                 id: control2
                 height: rowBottomDetails.height
-                ButtonGroup.group: groupBtnDetails
+                ButtonGroup.group: groupDetailButtons
                 width : (rowBottomDetails.width - rowBottomDetails.leftMargin - rowBottomDetails.rightMargin) / detailModel.count
                 radius: 2
                 text: name
