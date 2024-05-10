@@ -139,9 +139,7 @@ Rectangle{
 
                 background:  Rectangle {
                     implicitHeight: control.Material.delegateHeight
-
                     color:  "transparent"
-
                     Ripple {
                         clip: true
                         clipRadius: parent.radius
@@ -203,7 +201,7 @@ Rectangle{
             bottomMargin: 0
             interactive: false
             leftMargin: 68/2
-            rightMargin: 10 //r.width > 700 ? 68 : 10
+            rightMargin: 10
             orientation: ListView.Horizontal
             anchors.fill: parent
             model: detailModel
