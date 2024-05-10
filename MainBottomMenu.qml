@@ -173,21 +173,6 @@ Rectangle{
             id: groupDetailButtons
             exclusive: true
             property int clickedIndex: -1
-            onClicked: function(btn) {
-                if(checkedButton){
-                    checkedButton.contentItem.color =  r.bottomPaneNoSelectButtonColor
-                    checkedButton.background.color = "transparent"
-                }
-
-                btn.contentItem.color = r.bottomPaneSelectedButtonColor 
-                btn.background.color = r.btnClickedBackgroundColor
-                //checkedButton = btn
-                if(!r.debug){
-                    pagemain.switchPageFromQML(btn.index, 0)
-                }
-            }
-            Component.onCompleted: {
-            }
         }
         ListModel {
             id: detailModel
@@ -243,15 +228,12 @@ Rectangle{
                         r.updateDetailPage(index);
                     }
                 }
-                Component.onCompleted: {
-                    contentItem.color =  r.bottomPaneNoSelectButtonColor
-                }
             }
             
             Component.onCompleted: {
-                groupBtnDetails.checkedButton = groupBtnDetails.buttons[r.cncModeIndex]
-                groupBtnDetails.buttons[r.cncModeIndex].contentItem.color = r.bottomPaneSelectedButtonColor
-                groupBtnDetails.buttons[r.cncModeIndex].background.color = r.btnClickedBackgroundColor
+                if(r.debug){
+                    r.updateDetailPage(0);
+                }
             }
         }
     }
