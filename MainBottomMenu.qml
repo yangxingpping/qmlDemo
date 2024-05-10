@@ -184,6 +184,18 @@ Rectangle{
                 name: qsTr("ProgX")
                 iconsource: "Prog.svg"
             }
+            ListElement {
+                name: qsTr("ProgA")
+                iconsource: "Prog.svg"
+            }
+            ListElement {
+                name: qsTr("ProgB")
+                iconsource: "Prog.svg"
+            }
+            ListElement {
+                name: qsTr("ProgC")
+                iconsource: "Prog.svg"
+            }
         }
         ListView {
             id: rowBottomDetails
