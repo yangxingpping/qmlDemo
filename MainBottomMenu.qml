@@ -238,6 +238,9 @@ Rectangle{
                         r.updateDetailPage(index);
                     }
                 }
+                Component.onCompleted: {
+                    contentItem.color =  r.bottomPaneNoSelectButtonColor
+                }
             }
             
             Component.onCompleted: {
